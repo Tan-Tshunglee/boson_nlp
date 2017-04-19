@@ -33,16 +33,30 @@ module BosonNlp
       request
       entity_hash = {}
       begin
-        parsed = response.parsed_response[0]
-        words = parsed['word']
-        entitys = parsed['entity']
-        unless entitys.nil? || entitys.empty?
-          entitys.each do |entity|
-            # entity array format [start_index, end_index, entity_type_string]
-            # see http://docs.bosonnlp.com/ner.html
-            entity_type = entity[2]
-            entity_hash[entity_type] = entity_hash[entity_type] || []
-            entity_hash[entity_type] << words[entity[0], entity[1]].join
+        parsed_response = response.parsed_response
+
+        if parsed_response.is_a? Hash
+          status_code = parsed_response['status'].to_i
+          case status_code
+          when 403
+            raise 'Invalid token'
+          when 400...599
+            raise 'Bad status code'
+          end
+        end
+
+        if parsed_response.is_a? Array
+          parsed_data = response.parsed_response[0]
+          words = parsed_data['word']
+          entities = parsed_data['entity']
+          unless entities.nil? || entities.empty?
+            entities.each do |entity|
+              # entity array format [start_index, end_index, entity_type_string]
+              # see http://docs.bosonnlp.com/ner.html
+              entity_type = entity[2]
+              entity_hash[entity_type] = entity_hash[entity_type] || []
+              entity_hash[entity_type] << words[entity[0], entity[1]].join
+            end
           end
         end
       rescue => e
