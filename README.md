@@ -20,7 +20,17 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Register here [Bosonnlp](http://bosonnlp.com/) and get the api token
+
+Initiate api token first as:
+
+    BosonNlp.configure do |config|
+      config.api_token = 'test_token'
+    end
+    
+Do the named entity recognition as:
+
+    BosonNlp.
 
 ## Development
 
