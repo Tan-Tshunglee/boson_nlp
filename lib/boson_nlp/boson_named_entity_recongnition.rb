@@ -55,7 +55,7 @@ module BosonNlp
               # see http://docs.bosonnlp.com/ner.html
               entity_type = entity[2]
               entity_hash[entity_type] = entity_hash[entity_type] || []
-              entity_hash[entity_type] << words[entity[0], entity[1]].join
+              entity_hash[entity_type] << words[entity[0]...entity[1]].join
             end
           end
         end
