@@ -13,6 +13,6 @@ module ApiBaseMock
         }
       ]
     end
-    allow(BosonNlp::ApiBase).to receive(:post).with('/ner/analysis', anything).and_return(response)
+    allow(BosonNlp::BosonApiBase).to receive(:post).with('/ner/analysis', anything).and_return(response)
   end
 end

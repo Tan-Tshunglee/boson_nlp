@@ -2,7 +2,7 @@ require 'httparty'
 
 module BosonNlp
   # ApiBase
-  class ApiBase
+  class BosonApiBase
     include HTTParty
     attr_accessor :token, :body, :query_hash, :response
     attr_writer :http_method
@@ -33,7 +33,7 @@ module BosonNlp
         'Accept' => 'application/json',
         'X-Token' => token
       }.merge! request_header
-      request_method = ApiBase.method(http_method)
+      request_method = BosonApiBase.method(http_method)
       @response = request_method.call api_path, headers: headers, query: query_hash, body: body
     end
 

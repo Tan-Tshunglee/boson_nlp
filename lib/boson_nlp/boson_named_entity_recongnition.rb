@@ -2,7 +2,7 @@ require 'httparty'
 
 module BosonNlp
   # Named entity recongnition
-  class NamedEntityRecongnition < ApiBase
+  class BosonNamedEntityRecongnition < BosonApiBase
     class MalResponseError < Exception
 
     end

@@ -1,7 +1,7 @@
 require 'spec_helper'
 require_relative './stubs/api_base_mock'
 
-describe BosonNlp::NamedEntityRecongnition do
+describe BosonNlp::BosonNamedEntityRecongnition do
 
   describe 'Constructor' do
     include ApiBaseMock
@@ -16,12 +16,12 @@ describe BosonNlp::NamedEntityRecongnition do
     end
 
     it 'initiation success' do
-      api_base = BosonNlp::NamedEntityRecongnition.new '测试文本'
+      api_base = BosonNlp::BosonNamedEntityRecongnition.new '测试文本'
       expect(api_base.token).to eq 'test_token'
     end
 
     it 'request and parse success' do
-      api_base = BosonNlp::NamedEntityRecongnition.new '测试文本'
+      api_base = BosonNlp::BosonNamedEntityRecongnition.new '测试文本'
       entity_map = api_base.request_and_parse
       expect(entity_map['location'].size).to eq 2
     end
@@ -33,7 +33,7 @@ describe BosonNlp::NamedEntityRecongnition do
       }
 
       mock_ner_analysis_api response
-      api_base = BosonNlp::NamedEntityRecongnition.new '测试文本'
+      api_base = BosonNlp::BosonNamedEntityRecongnition.new '测试文本'
       expect{api_base.request_and_parse}.to raise_exception
     end
 

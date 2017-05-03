@@ -1,6 +1,6 @@
 require 'boson_nlp/version'
-require 'boson_nlp/api_base'
-require 'boson_nlp/named_entity_recongnition'
+require 'boson_nlp/boson_api_base'
+require 'boson_nlp/boson_named_entity_recongnition'
 
 # BosonNlp module
 module BosonNlp
@@ -27,7 +27,7 @@ module BosonNlp
   # :args text, sensitivity
   # :text text to be analysed
   def self.ner_analysis(text, sensitivity = 3)
-    ner = NamedEntityRecongnition.new(text, sensitivity)
+    ner = BosonNamedEntityRecongnition.new(text, sensitivity)
     ner.request_and_parse
   end
 end
