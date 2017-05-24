@@ -30,8 +30,9 @@ Initiate api token first as:
     
 Do the named entity recognition as:
 
-    BosonNlp.
-
+    result = BosonNlp.ner_analysis(text, sensitivity = 3)
+    result[entity_type] = [entity string array]
+    examples result['location'] = ['address 1', 'address 2']
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
